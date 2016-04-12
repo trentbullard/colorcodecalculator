@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  position: MyString
+  color: MyString
+  significant_figures: 1
+  multiplier: 1
+  tolerance: 1
+
+two:
+  position: MyString
+  color: MyString
+  significant_figures: 1
+  multiplier: 1
+  tolerance: 1
