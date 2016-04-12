@@ -22,6 +22,7 @@ test:
 
 production:
   <<: *default
+  adapter: postgresql
   database: d3v62so9hoqbfr
   username: jvvxaowsresxwg
   password: 'UdZKbM0XDfF9bV59NIFJc24JGV'
