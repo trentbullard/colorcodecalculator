@@ -1,7 +1,6 @@
 class StaticPagesController < ApplicationController
   
   def home
-    console
     @bands = Band.all
     @resistor = if Resistor.last then Resistor.last else Resistor.new end
     @bands_selected = []
