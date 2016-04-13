@@ -8,16 +8,18 @@
   <div class="col-lg-12 text-center" style="font-size: 100px;">
     <ul class="list-inline">
       <li><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></li>
-      <% @bands.each do |band| %>
-        <li><%= link_to '|', '#', style: "color: #{band.color};" %></li>
+      <% @bands_selected.each do |band| %>
+        <li>
+          <%= band_link(band) %>
+        </li>
       <% end %>
-      <% if @bands.count < 4 then %>
+      <% if @bands_selected.count < 4 then %>
         <span class="dropdown">
           <%= add_band_btn %>
           <ul class="dropdown-menu" aria-labelledby="dropdownAddBand">
-            <% Band.all.each do |b| %>
+            <% @bands.each do |b| %>
               <li>
-                <% unless !b.color %><%= link_to b.color, '#', style: "color: #{b.color};" %><% end %>
+                <% unless !b.color %><%= add_band_link(@resistor,@bands_selected,b) %><% end %>
               </li>
             <% end %>
           </ul>
@@ -26,4 +28,26 @@
       <li><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></li>
     </ul>
   </div>
+</div>
+<div class='row text-center'>
+  <form class='form-inline'>
+    <div class='col-md-4'>
+        <div class='form-group'>
+          <label for='idealResistance'>Ideal Resistance</label>
+          <input type='text' class='form-control' id='idealResistance' readonly>
+        </div>
+    </div>
+    <div class='col-md-4'>
+      <div class='form-group'>
+        <label for='lowResistance'>Minimum Resistance</label>
+        <input type='text' class='form-control' id='lowResistance' readonly>
+      </div>
+    </div>
+    <div class='col-md-4'>
+        <div class='form-group'>
+          <label for='hiResistance'>Maximum Resistance</label>
+          <input type='text' class='form-control' id='maxResistance' readonly>
+        </div>
+    </div>
+  </form>
 </div>

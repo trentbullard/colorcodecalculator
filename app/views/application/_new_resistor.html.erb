@@ -1,0 +1,15 @@
+<%= form_for @resistor do |f| %>
+  <% if !bands[0] then %>
+    <%= f.hidden_field :band_a_id, value: new_band.id %>
+  <% elsif !bands[1] then %>
+    <%= f.hidden_field :band_a_id, value: bands[0].id %>
+    <%= f.hidden_field :band_b_id, value: new_band.id %>
+  <% elsif !bands[2] then %>
+    <%= f.hidden_field :band_b_id, value: bands[1].id %>
+    <%= f.hidden_field :band_c_id, value: new_band.id %>
+  <% elsif !bands[3] then %>
+    <%= f.hidden_field :band_c_id, value: bands[2].id %>
+    <%= f.hidden_field :band_d_id, value: new_band.id %>
+  <% end %>
+  <%= render 'new_band', f: f, band: new_band %>
+<% end %>

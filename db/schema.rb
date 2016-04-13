@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412203330) do
+ActiveRecord::Schema.define(version: 20160413141957) do
 
   create_table "bands", force: :cascade do |t|
     t.string   "color"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20160412203330) do
     t.decimal  "tolerance"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+  end
+
+  create_table "resistors", force: :cascade do |t|
+    t.decimal  "resistance"
+    t.integer  "band_a_id"
+    t.integer  "band_b_id"
+    t.integer  "band_c_id"
+    t.integer  "band_d_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

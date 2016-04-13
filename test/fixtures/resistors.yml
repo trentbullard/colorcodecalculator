@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  resistance: 9.99
+  band_a_id: 1
+  band_b_id: 1
+  band_c_id: 1
+  band_d_id: 1
+
+two:
+  resistance: 9.99
+  band_a_id: 1
+  band_b_id: 1
+  band_c_id: 1
+  band_d_id: 1

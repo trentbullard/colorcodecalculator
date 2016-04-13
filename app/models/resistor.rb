@@ -1,2 +1,2 @@
-class Resistor
+class Resistor < ActiveRecord::Base
 end

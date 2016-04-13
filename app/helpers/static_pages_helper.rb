@@ -1,14 +1,27 @@
 module StaticPagesHelper
   def add_band_btn
-    button_tag(class: 'btn btn-default tooltip-class dropdown-toggle',
-               id: 'dropdownAddBand',
-               data: {toggle: 'dropdown'},
-               aria: {haspopup: true, expanded: false}) do
+    link_to('#',
+            class: 'btn btn-default tooltip-class dropdown-toggle',
+            id: 'dropdownAddBand',
+            data: {toggle: 'dropdown'},
+            aria: {haspopup: true, expanded: false}) do
       content_tag(:div,
                   data: {toggle: 'tooltip',
                          placement: 'top',
                          'original-title' => 'Add Band'}) do
         '+'
+      end
+    end
+  end
+
+  def add_band_link resistor, current_bands, new_band
+    render 'new_resistor', resistor: resistor, bands: current_bands, new_band: new_band
+  end
+
+  def band_link(band)
+    link_to '#', class: 'tooltip-class', style: "color: #{band.color};" do
+      content_tag :span, data: {toggle: 'tooltip', placement: 'top', 'original-title' => "#{band.color}"} do
+        '|'
       end
     end
   end
