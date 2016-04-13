@@ -4,6 +4,7 @@
   </div>
 </div>
 
+<%= render 'flash' %>
 <div class="row">
   <div class="col-lg-12 text-center" style="font-size: 100px;">
     <ul class="list-inline">
@@ -17,10 +18,26 @@
         <span class="dropdown">
           <%= add_band_btn %>
           <ul class="dropdown-menu" aria-labelledby="dropdownAddBand">
-            <% @bands.each do |b| %>
-              <li>
-                <% unless !b.color %><%= add_band_link(@resistor,@bands_selected,b) %><% end %>
-              </li>
+            <% if @bands_selected.count < 2 then %>
+              <% @bands[0..9].each do |b| %>
+                <li>
+                  <%= add_band_link(@resistor,@bands_selected,b,style: 'new_band') %>
+                </li>
+              <% end %>
+            <% elsif @bands_selected.count == 3 then %>
+              <% @bands.each do |b| %>
+                <% if b.color != 'black' and b.color != 'orange' and b.color != 'white' and b.color then %>
+                  <li>
+                    <%= add_band_link(@resistor,@bands_selected,b,style: 'new_band') %>
+                  </li>
+                <% end %>
+              <% end %>
+            <% else %>
+              <% @bands[0..11].each do |b| %>
+                <li>
+                  <%= add_band_link(@resistor,@bands_selected,b,style: 'new_band') %>
+                </li>
+              <% end %>
             <% end %>
           </ul>
         </span>
@@ -29,25 +46,41 @@
     </ul>
   </div>
 </div>
-<div class='row text-center'>
-  <form class='form-inline'>
-    <div class='col-md-4'>
-        <div class='form-group'>
-          <label for='idealResistance'>Ideal Resistance</label>
-          <%= text_field_tag 'idealResistance', "#{@resistor.CalculateOhmValue(bandAColor: @bands_selected[0].color, bandBColor: @bands_selected[1].color, bandCColor: @bands_selected[2].color, bandDColor: @bands_selected[3].color)}", class: 'form-control', readonly: true %>
+
+<% if @bands_selected.count == 4 then %>
+  <div class='row'>
+    <div class='col-lg-4 col-lg-offset-4'>
+      <div class='panel panel-default'>
+        <div class='panel-body'>
+          <% if !(@bands_selected[0].color == 'gold') or !(@bands_selected[0].color == 'silver') or !(@bands_selected[1].color == 'gold') or !(@bands_selected[1].color == 'silver') %>
+            <form>
+              <div class='form-group'>
+                <label for='idealResistance'>Ideal Resistance</label>
+                <%= text_field_tag 'idealResistance', "#{@resistor.CalculateOhmValue(bandAColor: @bands_selected[0].color, bandBColor: @bands_selected[1].color, bandCColor: @bands_selected[2].color, bandDColor: @bands_selected[3].color)}", class: 'form-control', readonly: true %>
+              </div>
+              <div class='form-group'>
+                <label for='lowResistance'>Minimum Resistance</label>
+                <%= text_field_tag 'idealResistance', "#{@resistor.min_resistance(@resistor.resistance, @bands_selected[3].color)}", class: 'form-control', readonly: true %>
+              </div>
+              <div class='form-group'>
+                <label for='hiResistance'>Maximum Resistance</label>
+                <%= text_field_tag 'idealResistance', "#{@resistor.max_resistance(@resistor.resistance, @bands_selected[3].color)}", class: 'form-control', readonly: true %>
+              </div>
+            </form>
+          <% else %>
+                Bands A and B cannot be gold or silver.
+          <% end %>
         </div>
-    </div>
-    <div class='col-md-4'>
-      <div class='form-group'>
-        <label for='lowResistance'>Minimum Resistance</label>
-        <%= text_field_tag 'idealResistance', "#{@resistor.min_resistance(@resistor.resistance, @bands_selected[3].color)}", class: 'form-control', readonly: true %>
+        <div class='panel-footer'>
+          <%= render 'reset_link' %>
+        </div>
       </div>
     </div>
-    <div class='col-md-4'>
-        <div class='form-group'>
-          <label for='hiResistance'>Maximum Resistance</label>
-          <%= text_field_tag 'idealResistance', "#{@resistor.max_resistance(@resistor.resistance, @bands_selected[3].color)}", class: 'form-control', readonly: true %>
-        </div>
+  </div>
+<% else %>
+  <div class='row text-center'>
+    <div class='col-lg-12'>
+      <h2>Add 4 bands to get calculation.</h2>
     </div>
-  </form>
-</div>
+  </div>
+<% end %>

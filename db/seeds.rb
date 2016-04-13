@@ -10,5 +10,4 @@ Band.create([
   {color: 'gray',   significant_figures: 8, multiplier: 100000000,  tolerance: 0.05 },
   {color: 'white',  significant_figures: 9, multiplier: 1000000000                  },
   {color: 'gold',                           multiplier: 0.1,        tolerance: 5    },
-  {color: 'silver',                         multiplier: 0.01,       tolerance: 10   },
-  {                                                                 tolerance: 20   }])
+  {color: 'silver',                         multiplier: 0.01,       tolerance: 10   }])

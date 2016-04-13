@@ -14,12 +14,12 @@ module StaticPagesHelper
     end
   end
 
-  def add_band_link resistor, current_bands, new_band
-    render 'new_resistor', resistor: resistor, bands: current_bands, new_band: new_band
+  def add_band_link resistor, current_bands, new_band, options={}
+    render 'new_resistor', resistor: resistor, bands: current_bands, new_band: new_band, style: options[:style]
   end
 
   def band_link(band)
-    link_to '#', class: 'tooltip-class', style: "color: #{band.color};" do
+    link_to '', class: 'tooltip-class', style: "color: #{band.color};" do
       content_tag :span, data: {toggle: 'tooltip', placement: 'top', 'original-title' => "#{band.color}"} do
         '|'
       end

@@ -11,5 +11,5 @@
     <%= f.hidden_field :band_c_id, value: bands[2].id %>
     <%= f.hidden_field :band_d_id, value: new_band.id %>
   <% end %>
-  <%= render 'new_band', f: f, band: new_band %>
+  <%= render style, f: f, band: new_band %>
 <% end %>

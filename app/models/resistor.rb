@@ -1,7 +1,7 @@
 class Resistor < ActiveRecord::Base
 
   def CalculateOhmValue bandAColor: nil, bandBColor: nil, bandCColor: nil, bandDColor: nil
-    resistance = 0 
+    resistance = 0
     
     if :bandAColor then 
       band_a = Band.find_by color: bandAColor

@@ -1,0 +1,7 @@
+<%= form_for @resistor do |f| %>
+  <%= f.hidden_field :band_a_id, value: nil %>
+  <%= f.hidden_field :band_b_id, value: nil %>
+  <%= f.hidden_field :band_c_id, value: nil %>
+  <%= f.hidden_field :band_d_id, value: nil %>
+  <%= link_to('Reset', '', onclick: "$('#edit_resistor_1').submit()", class: 'btn btn-default') %>
+<% end %>
