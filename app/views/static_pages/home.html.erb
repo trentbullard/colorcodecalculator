@@ -34,19 +34,19 @@
     <div class='col-md-4'>
         <div class='form-group'>
           <label for='idealResistance'>Ideal Resistance</label>
-          <input type='text' class='form-control' id='idealResistance' readonly>
+          <%= text_field_tag 'idealResistance', "#{@resistor.CalculateOhmValue(bandAColor: @bands_selected[0].color, bandBColor: @bands_selected[1].color, bandCColor: @bands_selected[2].color, bandDColor: @bands_selected[3].color)}", class: 'form-control', readonly: true %>
         </div>
     </div>
     <div class='col-md-4'>
       <div class='form-group'>
         <label for='lowResistance'>Minimum Resistance</label>
-        <input type='text' class='form-control' id='lowResistance' readonly>
+        <%= text_field_tag 'idealResistance', "#{@resistor.min_resistance(@resistor.resistance, @bands_selected[3].color)}", class: 'form-control', readonly: true %>
       </div>
     </div>
     <div class='col-md-4'>
         <div class='form-group'>
           <label for='hiResistance'>Maximum Resistance</label>
-          <input type='text' class='form-control' id='maxResistance' readonly>
+          <%= text_field_tag 'idealResistance', "#{@resistor.max_resistance(@resistor.resistance, @bands_selected[3].color)}", class: 'form-control', readonly: true %>
         </div>
     </div>
   </form>
