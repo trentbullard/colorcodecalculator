@@ -30,7 +30,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li>
-            <a href="#">About</a>
+            <a href="#" data-toggle='modal' data-target="#aboutModal">About</a>
           </li>
           <li>
             <a href="#" data-toggle='modal' data-target="#helpModal">Help</a>
@@ -54,7 +54,27 @@
           <h4 class="modal-title">Electronic Color Codes</h4>
         </div>
         <div class="modal-body">
-          Some help text...
+          Check <a href="https://en.wikipedia.org/wiki/Electronic_color_code">wikipedia</a> for more information about the electronic color code bands.<br><br>
+          To use the calculator, simply click the plus to add the bands which correspond to the colors on the resistor. Once 4 bands are added, the ideal resistance as well as the minimum and maximum resistances based on tolerance will appear.<br><br>
+          Some bands are unavailable in certain positions, such as gold and silver in the first and second position.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+
+  <!-- About Modal -->
+  <div class="fade modal" id="aboutModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Electronic Color Codes</h4>
+        </div>
+        <div class="modal-body">
+          This calculator was created by <a href="www.trentbullard.com">Trenton Bullard</a>. A <a href="http://getbootstrap.com/examples/starter-template/">bootstrap template</a> was used which includes the glyphicons-halflings made by <a href="glyphicons.com">glyphicons.com</a>.
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
